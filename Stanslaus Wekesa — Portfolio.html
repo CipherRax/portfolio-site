@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stanslaus Wekesa — Backend and full-stack developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F3F0;--surface:#fff;--ink:#16191D;--muted:#5B636B;--line:#D5DAD6;--accent:#2B44FF;--on-accent:#fff;--ok:#12805C;
+--display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--body:'Instrument Sans','Segoe UI',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101315;--surface:#181C1F;--ink:#ECEFEA;--muted:#9AA3A0;--line:#2A3033;--accent:#8DA0FF;--on-accent:#0B1020;--ok:#4FD1A0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101315;--surface:#181C1F;--ink:#ECEFEA;--muted:#9AA3A0;--line:#2A3033;--accent:#8DA0FF;--on-accent:#0B1020;--ok:#4FD1A0;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;padding-bottom:1.5rem;gap:1rem;flex-wrap:wrap}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+nav{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:.3rem .8rem;font:500 .9rem var(--body);cursor:pointer}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding:3.5rem 0 5rem}
+h1{font:800 clamp(2.4rem,5.5vw,4.2rem)/1.02 var(--display);letter-spacing:-.03em;margin:0 0 1.25rem}
+.lede{color:var(--muted);max-width:34rem;margin:0 0 2rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:.6rem;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn:hover{transform:translateY(-1px)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.25rem;box-shadow:0 18px 40px -24px rgba(20,30,60,.35)}
+.panel-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem}
+.panel-top p{margin:0;font:500 .85rem var(--mono);color:var(--muted)}
+.run{background:var(--ink);color:var(--bg);border:0;border-radius:.5rem;padding:.5rem 1rem;font:600 .9rem var(--body);cursor:pointer}
+.run:disabled{opacity:.5;cursor:default}
+.steps{list-style:none;margin:0;padding:0;font:400 .85rem/1.5 var(--mono)}
+.steps li{display:flex;gap:.75rem;padding:.6rem 0;border-top:1px solid var(--line);opacity:.35;transition:opacity .3s}
+.steps li.on{opacity:1}
+.steps li .dot{flex:none;width:.7rem;height:.7rem;margin-top:.4rem;border-radius:50%;border:2px solid var(--muted)}
+.steps li.on .dot{background:var(--ok);border-color:var(--ok)}
+.steps b{display:block;font-weight:500;color:var(--ink)}
+.steps span{color:var(--muted)}
+section{padding:4.5rem 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(1.7rem,3.5vw,2.4rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 2.5rem}
+.proj{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;padding:2rem 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj h3{font:700 1.6rem/1.15 var(--display);margin:0 0 .5rem;letter-spacing:-.01em}
+.proj .kind{color:var(--muted);margin:0}
+.proj p{margin:0 0 1rem;max-width:40rem}
+.tags{display:flex;gap:.5rem;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.tags li{font:400 .8rem var(--mono);border:1px solid var(--line);background:var(--surface);padding:.2rem .6rem;border-radius:.4rem}
+.proj.big h3{font-size:2.2rem}
+.link{font-weight:600;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:.2em;display:inline-block;margin-top:.75rem}
+.more{padding-top:2rem;border-top:1px solid var(--line);max-width:44rem}.more h3{font:700 1.1rem var(--display);margin:0 0 .5rem}.more p{margin:0;color:var(--muted)}
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.stack h3{font:700 1.1rem var(--display);margin:0 0 .5rem}
+.stack p{margin:0;color:var(--muted)}
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem}
+.about p{margin:0 0 1rem;max-width:40rem}
+.contact{font:800 clamp(1.8rem,5vw,3.4rem)/1.1 var(--display);letter-spacing:-.03em}
+.contact a{text-decoration-thickness:3px;text-underline-offset:.2em;text-decoration-color:var(--accent)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.hero,.proj,.about{grid-template-columns:1fr;gap:1.5rem}.stack{grid-template-columns:1fr}.hero{padding-top:1.5rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">Stanslaus</a>
+<nav aria-label="Main"><a href="#work">Work</a><a href="#stack">Stack</a><a href="#about">About</a><a href="#contact">Contact</a><button class="theme" id="theme" type="button">Theme</button></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+<div class="hero">
+<div>
+<h1>I build the backend and the app that talks to it.</h1>
+<p class="lede">I’m Stanslaus Wekesa, a full-stack developer from Kenya focused on backend systems and APIs: payments, inventory and sales platforms, and secure REST services. I’m now going deeper into application security.</p>
+<div class="btns"><a class="btn primary" href="#work">See my projects</a><a class="btn" href="#contact">Get in touch</a></div>
+</div>
+<div class="panel" aria-label="Interactive demo of an order request">
+<div class="panel-top"><p>POST /orders</p><button class="run" id="run" type="button">Place order</button></div>
+<ol class="steps" id="steps" aria-live="polite">
+<li><i class="dot"></i><div><b>201 Created</b><span>Order saved, stock reserved</span></div></li>
+<li><i class="dot"></i><div><b>STK push sent</b><span>M-Pesa prompt on the customer’s phone</span></div></li>
+<li><i class="dot"></i><div><b>Callback verified</b><span>Payment confirmed, order marked paid</span></div></li>
+<li><i class="dot"></i><div><b>order:paid emitted</b><span>Kitchen and rider apps update live</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+
+<section id="work"><div class="wrap">
+<h2>Selected work</h2>
+
+<article class="proj big">
+<div><h3>careOS</h3><p class="kind">Clinic and hospital management platform</p><a class="link" href="https://github.com/CipherRax/CareOS-A-Hospital-Management-System-API" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>A multi-tenant platform for the Kenyan healthcare market that follows the whole patient journey, from registration and triage to lab, pharmacy, inpatient beds and billing. Tenants are isolated with Postgres row-level security, events flow through an outbox, and billing runs on a double-entry ledger with M-Pesa and insurance claims. Role-based workspaces, a patient portal and a hospital finder sit on top.</p><ul class="tags"><li>NestJS</li><li>Fastify</li><li>PostgreSQL RLS</li><li>Prisma</li><li>Redis</li><li>BullMQ</li><li>Next.js 15</li></ul></div>
+</article>
+<article class="proj">
+<div><h3>Habita</h3><p class="kind">Property management and rentals SaaS</p><a class="link" href="https://github.com/CipherRax/ProPrentals-API-Multi-Tenant-Property-Management-Rental-SaaS" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>A multi-tenant platform for Kenyan landlords with M-Pesa rent collection. Units are managed like stock, so the marketplace shows one card per unit type instead of hundreds of identical listings.</p><ul class="tags"><li>NestJS</li><li>PostgreSQL</li><li>Prisma</li><li>Next.js</li><li>M-Pesa</li></ul></div>
+</article>
+<article class="proj">
+<div><h3>Biz360</h3><p class="kind">SME ERP with eTIMS</p><a class="link" href="https://github.com/CipherRax/Biz360-SME-ERP-eTIMS" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>An ERP for small and medium businesses in Kenya, built around inventory, sales and eTIMS tax compliance.</p><ul class="tags"><li>TypeScript</li><li>eTIMS</li></ul></div>
+</article>
+<article class="proj">
+<div><h3>E-commerce API with M-Pesa</h3><p class="kind">Commerce backend</p><a class="link" href="https://github.com/CipherRax/mpesa-commerce-api" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>Covers the full life of an online store: products, inventory, suppliers, purchases, cart, orders, payments, receipts, reviews and reports. Daraja runs in mock mode until real credentials are added. JWT auth, PDF receipts and Swagger docs included.</p><ul class="tags"><li>Express</li><li>TypeScript strict</li><li>PostgreSQL</li><li>Prisma</li><li>Swagger</li></ul></div>
+</article>
+<article class="proj">
+<div><h3>High-volume SMS notifications</h3><p class="kind">Queue-based messaging system</p><a class="link" href="https://github.com/CipherRax/SMS-Notification-System-High-Volume-Queues" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>Sends notifications in the background through Redis and BullMQ, so spikes in volume queue up instead of slowing down the app.</p><ul class="tags"><li>JavaScript</li><li>Redis</li><li>BullMQ</li></ul></div>
+</article>
+<article class="proj">
+<div><h3>CBC school management API</h3><p class="kind">Education backend</p><a class="link" href="https://github.com/CipherRax/CBC--School-Management-Sytem-API" target="_blank" rel="noopener">View on GitHub</a></div>
+<div><p>A full API for managing schools under Kenya’s competency-based curriculum.</p><ul class="tags"><li>TypeScript</li><li>REST API</li></ul></div>
+</article>
+<div class="more"><h3>Also built</h3>
+<p><b>Dev Tracker</b> is a Next.js dashboard where developers track milestones and change requests, and clients follow progress through a read-only link. <b>Flutter apps from design</b> turn exported designs into working apps with Provider and Hive.</p></div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+<h2>What I work with</h2>
+<div class="stack">
+<div><h3>Backend</h3><p>TypeScript, Node.js, NestJS, Fastify, Express, PostgreSQL, Prisma, Redis, BullMQ, REST API design</p></div>
+<div><h3>Mobile</h3><p>Flutter and Dart, Provider, Hive, translating UI designs into clean widgets</p></div>
+<div><h3>Web, payments and ops</h3><p>Next.js, React, Tailwind, M-Pesa Daraja, eTIMS, Docker, row-level multi-tenancy, role-based access</p></div>
+</div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+<h2>About</h2>
+<div>
+<p>I build production-minded software: clear architecture, careful data isolation, secure payments, and interfaces that feel finished. Most of my work is backend-first, with a front end designed to match.</p>
+<p>I’m studying BSc Information Technology at Kirinyaga University (2022–2027) and building real products alongside my coursework.</p>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2>Let’s work together</h2>
+<p class="contact">Say hello at <a href="mailto:stanslaus011@gmail.com">stanslaus011@gmail.com</a></p>
+<p class="lede" style="margin-top:1.5rem">Open to backend and API roles and collaborations. Find me on <a href="https://github.com/CipherRax" target="_blank" rel="noopener">GitHub</a> and <a href="https://linkedin.com/in/stanslaus-wekesa" target="_blank" rel="noopener">LinkedIn</a>.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Stanslaus Wekesa. Built by hand.</div></footer>
+
+<script>
+(function(){
+var root=document.documentElement,tb=document.getElementById('theme');
+tb.addEventListener('click',function(){
+var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+root.dataset.theme=dark?'light':'dark';
+});
+var run=document.getElementById('run'),items=document.querySelectorAll('#steps li');
+function play(){
+run.disabled=true;items.forEach(function(li){li.classList.remove('on')});
+items.forEach(function(li,i){setTimeout(function(){li.classList.add('on');if(i===items.length-1){run.disabled=false;run.textContent='Run again'}},i*700+200)});
+}
+run.addEventListener('click',play);
+document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
